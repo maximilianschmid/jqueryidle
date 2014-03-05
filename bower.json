@@ -1,6 +1,6 @@
 {
   "name": "jqueryidle",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./jquery.idle.js",
   "dependencies": {
   	"jquery": ">=1.9"

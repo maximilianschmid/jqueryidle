@@ -5,7 +5,8 @@
         hasMoved = false,
         lastMove = (new Date()).getTime(),
         opts,
-        handleUserEvent;
+        handleUserEvent,
+        $this;
 
       if ($.isPlainObject(onactive)) {
         options = onactive;
@@ -28,24 +29,20 @@
         },
         'keydown': function (e) {
           handleUserEvent(e);
+        },
+        'mousedown': function (e) {
+          handleUserEvent(e);
         }
       });
 
-      if (Reveal){
-        Reveal.addEventListener('slidechanged', function (e) {
-          handleUserEvent(e);
-        });
-      }
-
       handleUserEvent = function (e) {
-//        console.log("userevent", e);
         hasMoved = true;
         lastMove = (new Date()).getTime();
         if (isidle) {
           onactive.call(this);
           isidle = false;
         }
-      }
+      };
 
       window.setInterval(function () {
         if ((new Date()).getTime() - lastMove > opts.after) {
